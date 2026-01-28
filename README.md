@@ -1,2 +1,2 @@
 # Learning-C-Language---
-C? What, Like it's hard? 
+C? What, Like it's hard? ( ╹ -╹)?
