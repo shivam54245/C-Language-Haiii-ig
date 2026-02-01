@@ -8,4 +8,4 @@ Ig it's hard, idk.... <b> ALL THE BEST!!! ദ്ദി◝ ⩊ ◜.ᐟ </b>
 <i> It just takes some time, <br>
 Little girl, you're in the middle of the ride, <br>
 Everything, everything'll be just fine, <br>
-Everything, everything'll be alright. <br> </i>
+Everything, everything'll be alright! <br> </i>
