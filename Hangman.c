@@ -19,16 +19,43 @@ TODO:
 
 
 // test word
-char target_word[100] = "Hundreds of beavers";
+char target_word[] = "Hundreds of beavers";
 int attempts_count = 0;
+
+// Output module
+void Output_text(char show_these_letters[]) {
+    for (int letter_index_for_target_word = 0; target_word[letter_index_for_target_word] != '\0'; letter_index_for_target_word++) {
+        
+        // check if letter exists
+        for (int letter_index_for_show_these_letters = 0; show_these_letters[letter_index_for_show_these_letters] != '\0'; letter_index_for_show_these_letters++) {
+            if (target_word[letter_index_for_target_word] == show_these_letters[letter_index_for_show_these_letters]) {
+                printf('%c', target_word[letter_index_for_target_word]);
+            }
+
+            else {
+                    printf(" | __ ");
+            }
+        
+        printf(" | \n");
+        }
+    }
+}
+
+
 
 int main() {
 
     // code for printing stuff output ig
-   
-    // letter   or guess the answer
-    char attempt_mode[2];
-    attempts_count += 1
+char letters_to_show[] = "";
+   while (1) {
+    char guessed_letter;
+    scanf("Enter the letter you want to use: " , guessed_letter);
+    char letters_to_show = letters_to_show + guessed_letter;
+    Output_text(letters_to_show);
+
+   }
+    // letter attempt or guess the answer
+    
     
 
 }
