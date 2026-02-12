@@ -30,15 +30,21 @@ void Output_text(char show_these_letters[]) {
     for (int letter_index_for_target_word = 0; target_word[letter_index_for_target_word] != '\0'; letter_index_for_target_word++) {
         
         // check if letter exists
-        for (int letter_index_for_show_these_letters = 0; show_these_letters[letter_index_for_show_these_letters  + 1] != '\0'; letter_index_for_show_these_letters++) {
+        int is_letter_present = 0; 
+        for (int letter_index_for_show_these_letters = 0; show_these_letters[letter_index_for_show_these_letters] != '\0'; letter_index_for_show_these_letters++) {
             if (target_word[letter_index_for_target_word] == show_these_letters[letter_index_for_show_these_letters]) {
-                printf("%c", target_word[letter_index_for_target_word]);
+                printf("| %c ", target_word[letter_index_for_target_word]);
+                is_letter_present = 1;
+                break;
             }
-
+        }
+        if (!is_letter_present) {
+            if (target_word[letter_index_for_target_word] == ' ') {
+                printf("|  ");
+            }
             else {
                     printf("| __ ");
             }
-        
         }
     }
 
