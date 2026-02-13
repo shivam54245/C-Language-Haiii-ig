@@ -10,6 +10,7 @@ TODO:
         repeat 7?? times
 
     OPTIONAL:
+        single player and multiplayer modes
         different modes (words, movies, shows, countries, etc)
         read from different text files for each
         wordle type stuff, like if a letter is present but not in the correct spot
@@ -21,8 +22,10 @@ TODO:
 // test word
 
 #include <stdio.h>
-char target_word[] = "HUNDREDS OF BEAVERS";
+char raw_target_word[] = "Americaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa cough cough";
+char* target_word;
 int attempts_count = 0;
+
 
 // Output module
 void Output_text(char show_these_letters[]) {
@@ -63,7 +66,7 @@ char* Append_letter_to_string(char str_1[], char letter) {
 }
 
 //uppercase for letters
-char Make_uppercase(char letter) {
+char Make_uppercase_letter(char letter) {
     if (letter == 'A' || letter == 'a') { return 'A'; }
     if (letter == 'B' || letter == 'b') { return 'B'; }
     if (letter == 'C' || letter == 'c') { return 'C'; }
@@ -92,6 +95,15 @@ char Make_uppercase(char letter) {
     if (letter == 'Z' || letter == 'z') { return 'Z'; }
 }
 
+char* Make_uppercase_word(char word[]) {
+
+    static char uppercase_word[100] = "";
+    for (int i = 0; word[i] != '\0'; i++) {
+        Append_letter_to_string(uppercase_word, Make_uppercase_letter(word[i]));
+    }
+    return uppercase_word;
+}
+
 //cheking if a letter is present in a string
 int Is_letter_present(char string[], char letter) {
     for (int i = 0; string[i] != '\0'; i++) {
@@ -108,6 +120,7 @@ int Is_letter_present(char string[], char letter) {
 int main() {
 
     // code for printing stuff output ig
+    target_word = Make_uppercase_word(raw_target_word);
     printf("\n\n\n\n");
     char letters_to_show[100] = "";
     int number_of_tries = 1; 
@@ -116,7 +129,7 @@ int main() {
         Output_text(letters_to_show);
         printf("\n\n\nATTEMPT %d: \n    Enter the letter you want to use: ", number_of_tries);
         scanf(" %c", &guessed_letter);
-        guessed_letter = Make_uppercase(guessed_letter);
+        guessed_letter = Make_uppercase_letter(guessed_letter);
         Append_letter_to_string(letters_to_show, guessed_letter);
         if (!Is_letter_present(target_word, guessed_letter)) {
             number_of_tries++;
