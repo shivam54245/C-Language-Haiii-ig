@@ -22,9 +22,12 @@ TODO:
 // test word
 
 #include <stdio.h>
-char raw_target_word[] = "Americaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa cough cough";
+char raw_target_word[] = "America cough cough";
 char* target_word;
-int attempts_count = 0;
+
+//intro text
+char intro_text[] = "\n\n\n\n\nHii!! This is my attempt at the recreation of a popular game known as Hangman.\n\n ***HOW TO PLAY***\n# The objective is to guess the text on the screen, with the help of cues as they are revealed each time you pick a letter to make a guess.\n# If the letter is present in the word then it is revealed wherever it may be present. If the letter is not present you will lose an attempt.\n# Once you believe you have figured out the guess, you may go ahead and type the whole word, or just the letters left to reveal it, at once.\n# But remember you only have limited numbers of attempts to guess the word so be careful! And Enjoy, GOOD LUCK!!\n";
+
 
 
 // Output module
@@ -54,7 +57,7 @@ void Output_text(char show_these_letters[]) {
 
 }
 
-//string concatenation function
+//string append function
 char* Append_letter_to_string(char str_1[], char letter) {
     int length = 0;
     for (int i = 0; str_1[i] != '\0'; i++) {
@@ -116,17 +119,24 @@ int Is_letter_present(char string[], char letter) {
 
 
 
-
 int main() {
 
-    // code for printing stuff output ig
+    // future me code for target word randomization
+
+    
+    //initialization
+    printf(intro_text);
+    char intro_text[] = "\nGOOD LUCK!! 👍👍\n";
+    int attempts_count = 0;
     target_word = Make_uppercase_word(raw_target_word);
     printf("\n\n\n\n");
     char letters_to_show[100] = "";
     int number_of_tries = 1; 
-    while (number_of_tries <= 7) {
+
+    //main loop
+    while (1) {
+        //input letter prossesing
         char guessed_letter;
-        Output_text(letters_to_show);
         printf("\n\n\nATTEMPT %d: \n    Enter the letter you want to use: ", number_of_tries);
         scanf(" %c", &guessed_letter);
         guessed_letter = Make_uppercase_letter(guessed_letter);
@@ -134,9 +144,44 @@ int main() {
         if (!Is_letter_present(target_word, guessed_letter)) {
             number_of_tries++;
         }
+        
 
+        //check to see if the game is over
+        int is_game_in_progress = 0;
+        for (int i = 0; target_word[i] != '\0'; i++) {
+            if (!Is_letter_present(letters_to_show, target_word[i])) {
+                is_game_in_progress = 1;
+                break;
+            }
+        }
+        //win condition
+        if (!is_game_in_progress) {
+            printf("Yay! You won! You are amazing!! 👏👏\n\n");
+            
+        }
+        //lose condition
+        if (number_of_tries > 7) {
+            printf("You Died! 😔😔\n\n");
+        }
+
+        //care to play again message
+        if (is_game_in_progress && number_of_tries <= 7) {
+            Output_text(letters_to_show);
+        }
+        if (!is_game_in_progress || number_of_tries > 7) {
+            printf("Would you like to play again?       [Y] Yes     [N] No (Default)\n\n");
+            char play_again_choice;
+            scanf("%c", &play_again_choice);
+            if (play_again_choice == 'Y' || play_again_choice == 'y') {
+                main();
+            }
+            else {
+                break;
+            }
+        }
+        
     }
-    // letter attempt or guess the answer
+
     
     
 
