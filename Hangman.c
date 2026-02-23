@@ -289,7 +289,8 @@ int main() {
             char play_again_choice;
             scanf(" %c", &play_again_choice);
             if (play_again_choice == 'Y' || play_again_choice == 'y') {
-                system("H1.exe");
+                system("Hangman.exe");
+                return 0;
             }
             else {
                 break;
