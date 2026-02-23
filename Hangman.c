@@ -22,7 +22,8 @@ TODO:
 // test word
 
 #include <stdio.h>
-char raw_target_word[] = "America cough cough";
+#include <stdlib.h>
+
 char* target_word;
 
 //intro text
@@ -125,18 +126,19 @@ int main() {
 
     
     //initialization
+    char raw_target_word[] = "America cough cough";
     printf(intro_text);
-    char intro_text[] = "\nGOOD LUCK!! 👍👍\n";
     int attempts_count = 0;
     target_word = Make_uppercase_word(raw_target_word);
     printf("\n\n\n\n");
-    char letters_to_show[100] = "";
+    char letters_to_show[100] = " ";
     int number_of_tries = 1; 
 
     //main loop
     while (1) {
         //input letter prossesing
         char guessed_letter;
+        Output_text(letters_to_show);
         printf("\n\n\nATTEMPT %d: \n    Enter the letter you want to use: ", number_of_tries);
         scanf(" %c", &guessed_letter);
         guessed_letter = Make_uppercase_letter(guessed_letter);
@@ -156,24 +158,26 @@ int main() {
         }
         //win condition
         if (!is_game_in_progress) {
-            printf("Yay! You won! You are amazing!! 👏👏\n\n");
+            Output_text(letters_to_show);
+            printf("\n\n\n\nYAY! YOU WON! YOU ARE AMAZING!!\n\n");
             
         }
         //lose condition
         if (number_of_tries > 7) {
-            printf("You Died! 😔😔\n\n");
+            printf("\n\n\n\nNOO!...YOU DIED! The word was %s.\n\n", target_word);
         }
 
         //care to play again message
         if (is_game_in_progress && number_of_tries <= 7) {
-            Output_text(letters_to_show);
+            // Output_text(letters_to_show);
         }
         if (!is_game_in_progress || number_of_tries > 7) {
             printf("Would you like to play again?       [Y] Yes     [N] No (Default)\n\n");
+            
             char play_again_choice;
-            scanf("%c", &play_again_choice);
+            scanf(" %c", &play_again_choice);
             if (play_again_choice == 'Y' || play_again_choice == 'y') {
-                main();
+                system("H1.exe");
             }
             else {
                 break;
