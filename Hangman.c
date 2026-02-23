@@ -19,15 +19,125 @@ TODO:
 */
 
 
-// test word
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+
+//Changable stuff
+int max_attempts = 7;      //number of attempts
+
+char *word_list[] = {      //word list having 100 words
+"Sholay",
+"Mother India",
+"Mughal e Azam",
+"Lagaan",
+"Dangal",
+"3 Idiots",
+"Taare Zameen Par",
+"Swades",
+"Chak De India",
+"Barfi",
+"Queen",
+"Bajrangi Bhaijaan",
+"PK",
+"Rang De Basanti",
+"Zindagi Na Milegi Dobara",
+"Dilwale Dulhania Le Jayenge",
+"Kabhi Khushi Kabhie Gham",
+"Kal Ho Naa Ho",
+"Kuch Kuch Hota Hai",
+"My Name Is Khan",
+"Black",
+"Rockstar",
+"Kahaani",
+"Andaz Apna Apna",
+"Golmaal",
+"Munna Bhai MBBS",
+"Lage Raho Munna Bhai",
+"Gully Boy",
+"Article 15",
+"Raazi",
+"Stree",
+"Badhaai Ho",
+"Piku",
+"Airlift",
+"Rustom",
+"Special 26",
+"Baby",
+"Neerja",
+"Mary Kom",
+"Bhaag Milkha Bhaag",
+"The Lunchbox",
+"Talvar",
+"Haider",
+"Omkara",
+"Maqbool",
+"Satya",
+"Company",
+"Singham",
+"Drishyam",
+"Tumbbad",
+"Parched",
+"Masaan",
+"Udaan",
+"Kai Po Che",
+"Dil Chahta Hai",
+"Kabir Singh",
+"Padmaavat",
+"Bajirao Mastani",
+"Gangubai Kathiawadi",
+"Sanju",
+"Dhobi Ghat",
+"Wake Up Sid",
+"Tamasha",
+"Yeh Jawaani Hai Deewani",
+"Student Of The Year",
+"Housefull",
+"Ek Tha Tiger",
+"Tiger Zinda Hai",
+"War",
+"Pathaan",
+"Jawan",
+"Don",
+"Don 2",
+"Ra One",
+"Koi Mil Gaya",
+"Krrish",
+"Krrish 3",
+"Kaabil",
+"Guzaarish",
+"Devdas",
+"Hum Dil De Chuke Sanam",
+"Hum Aapke Hain Koun",
+"Maine Pyar Kiya",
+"Dil",
+"Dil To Pagal Hai",
+"Mohabbatein",
+"Veer Zaara",
+"Fanaa",
+"Parineeta",
+"Saathiya",
+"Taal",
+"Roja",
+"Bombay",
+"Dil Se",
+"Guru",
+"Sarkar",
+"Sarkar Raj",
+"Paa",
+"Cheeni Kum"
+
+
+
+};
+
 
 char* target_word;
 
 //intro text
-char intro_text[] = "\n\n\n\n\nHii!! This is my attempt at the recreation of a popular game known as Hangman.\n\n ***HOW TO PLAY***\n# The objective is to guess the text on the screen, with the help of cues as they are revealed each time you pick a letter to make a guess.\n# If the letter is present in the word then it is revealed wherever it may be present. If the letter is not present you will lose an attempt.\n# Once you believe you have figured out the guess, you may go ahead and type the whole word, or just the letters left to reveal it, at once.\n# But remember you only have limited numbers of attempts to guess the word so be careful! And Enjoy, GOOD LUCK!!\n";
+char intro_text[] = "\n\n\n\n\nHii!! This is my attempt at the recreation of a popular game known as Hangman.\n\n ***HOW TO PLAY***\n# The objective is to guess the name of the movie, with the help of cues as they are revealed each time you pick a letter to make a guess.\n# If the letter is present in the movie name then it is revealed wherever it is present. If the letter is not present you lose an attempt.\n# Once you believe you have figured out the movie name, you may go ahead and type the whole word, or just the letters left to reveal it completely, at once.\n# But remember you only have limited numbers of attempts to guess the movie name so be careful! And Enjoy, GOOD LUCK!!\n";
 
 
 
@@ -71,32 +181,33 @@ char* Append_letter_to_string(char str_1[], char letter) {
 
 //uppercase for letters
 char Make_uppercase_letter(char letter) {
-    if (letter == 'A' || letter == 'a') { return 'A'; }
-    if (letter == 'B' || letter == 'b') { return 'B'; }
-    if (letter == 'C' || letter == 'c') { return 'C'; }
-    if (letter == 'D' || letter == 'd') { return 'D'; }
-    if (letter == 'E' || letter == 'e') { return 'E'; }
-    if (letter == 'F' || letter == 'f') { return 'F'; }
-    if (letter == 'G' || letter == 'g') { return 'G'; }
-    if (letter == 'H' || letter == 'h') { return 'H'; }
-    if (letter == 'I' || letter == 'i') { return 'I'; }
-    if (letter == 'J' || letter == 'j') { return 'J'; }
-    if (letter == 'K' || letter == 'k') { return 'K'; }
-    if (letter == 'L' || letter == 'l') { return 'L'; }
-    if (letter == 'M' || letter == 'm') { return 'M'; }
-    if (letter == 'N' || letter == 'n') { return 'N'; }
-    if (letter == 'O' || letter == 'o') { return 'O'; }
-    if (letter == 'P' || letter == 'p') { return 'P'; }
-    if (letter == 'Q' || letter == 'q') { return 'Q'; }
-    if (letter == 'R' || letter == 'r') { return 'R'; }
-    if (letter == 'S' || letter == 's') { return 'S'; }
-    if (letter == 'T' || letter == 't') { return 'T'; }
-    if (letter == 'U' || letter == 'u') { return 'U'; }
-    if (letter == 'V' || letter == 'v') { return 'V'; }
-    if (letter == 'W' || letter == 'w') { return 'W'; }
-    if (letter == 'X' || letter == 'x') { return 'X'; }
-    if (letter == 'Y' || letter == 'y') { return 'Y'; }
-    if (letter == 'Z' || letter == 'z') { return 'Z'; }
+    if (letter == 'a') { return 'A'; }
+    if (letter == 'b') { return 'B'; }
+    if (letter == 'c') { return 'C'; }
+    if (letter == 'd') { return 'D'; }
+    if (letter == 'e') { return 'E'; }
+    if (letter == 'f') { return 'F'; }
+    if (letter == 'g') { return 'G'; }
+    if (letter == 'h') { return 'H'; }
+    if (letter == 'i') { return 'I'; }
+    if (letter == 'j') { return 'J'; }
+    if (letter == 'k') { return 'K'; }
+    if (letter == 'l') { return 'L'; }
+    if (letter == 'm') { return 'M'; }
+    if (letter == 'n') { return 'N'; }
+    if (letter == 'o') { return 'O'; }
+    if (letter == 'p') { return 'P'; }
+    if (letter == 'q') { return 'Q'; }
+    if (letter == 'r') { return 'R'; }
+    if (letter == 's') { return 'S'; }
+    if (letter == 't') { return 'T'; }
+    if (letter == 'u') { return 'U'; }
+    if (letter == 'v') { return 'V'; }
+    if (letter == 'w') { return 'W'; }
+    if (letter == 'x') { return 'X'; }
+    if (letter == 'y') { return 'Y'; }
+    if (letter == 'z') { return 'Z'; }
+    else { return letter; }
 }
 
 char* Make_uppercase_word(char word[]) {
@@ -122,14 +233,16 @@ int Is_letter_present(char string[], char letter) {
 
 int main() {
 
-    // future me code for target word randomization
-
+    //target word randomization
+    int word_list_length = sizeof(word_list) / sizeof(word_list[0]);
+    srand(time(0));
+    int random_index = rand() % word_list_length;
+    char* raw_target_word = word_list[random_index];
+    target_word = Make_uppercase_word(raw_target_word);
     
     //initialization
-    char raw_target_word[] = "America cough cough";
     printf(intro_text);
     int attempts_count = 0;
-    target_word = Make_uppercase_word(raw_target_word);
     printf("\n\n\n\n");
     char letters_to_show[100] = " ";
     int number_of_tries = 1; 
@@ -139,7 +252,7 @@ int main() {
         //input letter prossesing
         char guessed_letter;
         Output_text(letters_to_show);
-        printf("\n\n\nATTEMPT %d: \n    Enter the letter you want to use: ", number_of_tries);
+        printf("\n\n\nATTEMPT %d of %d: \n    Enter the letter you want to use: ", number_of_tries, max_attempts);
         scanf(" %c", &guessed_letter);
         guessed_letter = Make_uppercase_letter(guessed_letter);
         Append_letter_to_string(letters_to_show, guessed_letter);
@@ -163,15 +276,15 @@ int main() {
             
         }
         //lose condition
-        if (number_of_tries > 7) {
-            printf("\n\n\n\nNOO!...YOU DIED! The word was %s.\n\n", target_word);
+        if (number_of_tries > max_attempts) {
+            printf("\n\n\n\nNOO!...YOU DIED! The movie name was %s.\n\n", target_word);
         }
 
         //care to play again message
-        if (is_game_in_progress && number_of_tries <= 7) {
+        if (is_game_in_progress && number_of_tries <= max_attempts) {
             // Output_text(letters_to_show);
         }
-        if (!is_game_in_progress || number_of_tries > 7) {
+        if (!is_game_in_progress || number_of_tries > max_attempts) {
             printf("Would you like to play again?       [Y] Yes     [N] No (Default)\n\n");
             
             char play_again_choice;
