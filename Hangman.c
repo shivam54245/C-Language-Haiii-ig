@@ -139,8 +139,6 @@ char* target_word;
 //intro text
 char intro_text[] = "\n\n\n\n\nHii!! This is my attempt at the recreation of a popular game known as Hangman.\n\n ***HOW TO PLAY***\n# The objective is to guess the name of the movie, with the help of cues as they are revealed each time you pick a letter to make a guess.\n# If the letter is present in the movie name then it is revealed wherever it is present. If the letter is not present you lose an attempt.\n# Once you believe you have figured out the movie name, you may go ahead and type the whole word, or just the letters left to reveal it completely, at once.\n# But remember you only have limited numbers of attempts to guess the movie name so be careful! And Enjoy, GOOD LUCK!!\n";
 
-
-
 // Output module
 void Output_text(char show_these_letters[]) {
 
@@ -252,6 +250,7 @@ int main() {
         //input letter prossesing
         char guessed_letter;
         Output_text(letters_to_show);
+
         printf("\n\n\nATTEMPT %d of %d: \n    Enter the letter you want to use: ", number_of_tries, max_attempts);
         scanf(" %c", &guessed_letter);
         guessed_letter = Make_uppercase_letter(guessed_letter);
@@ -272,12 +271,12 @@ int main() {
         //win condition
         if (!is_game_in_progress) {
             Output_text(letters_to_show);
-            printf("\n\n\n\nYAY! YOU WON! YOU ARE AMAZING!!\n\n");
+            printf("\n\n\n\nYAY! YOU WON! YOU ARE AMAZING!! \n\n");
             
         }
         //lose condition
         if (number_of_tries > max_attempts) {
-            printf("\n\n\n\nNOO!...YOU DIED! The movie name was %s.\n\n", target_word);
+            printf("\n\n\n\nNOO!...YOU LOST!! The movie name was %s.\n\n", target_word);
         }
 
         //care to play again message
@@ -285,7 +284,7 @@ int main() {
             // Output_text(letters_to_show);
         }
         if (!is_game_in_progress || number_of_tries > max_attempts) {
-            printf("Would you like to play again?       [Y] Yes     [N] No (Default)\n\n");
+            printf("Would you like to play again? [Y] Yes     [N] No (Default)\n\n");
             
             char play_again_choice;
             scanf(" %c", &play_again_choice);
