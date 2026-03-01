@@ -4,8 +4,11 @@
     {
       "label": "build and run C",
       "type": "shell",
-      "command": "bash",
-      "args": ["-c", "gcc ${file} -o ${fileBasenameNoExtension}.exe && ./${fileBasenameNoExtension}.exe"],
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "gcc ${file} -o ${fileBasenameNoExtension}.exe; ./${fileBasenameNoExtension}.exe"
+      ],
       "group": {
         "kind": "build",
         "isDefault": true
