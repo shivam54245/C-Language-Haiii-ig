@@ -12,7 +12,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "MIMode": "gdb",
-      "miDebuggerPath": "C:/mingw/bin/gdb.exe"
+      "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe"
     },
     {
       "name": "C/C++ Runner: Debug Session",
@@ -24,7 +24,7 @@
       "cwd": "c:/Users/shiva/Github Repositories/C-Language-Haiii-ig",
       "program": "c:/Users/shiva/Github Repositories/C-Language-Haiii-ig/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
