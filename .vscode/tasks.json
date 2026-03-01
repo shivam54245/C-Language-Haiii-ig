@@ -4,16 +4,26 @@
     {
       "label": "build and run C",
       "type": "shell",
-      "command": "powershell",
+      "command": "gcc",
       "args": [
-        "-Command",
-        "gcc ${file} -o ${fileBasenameNoExtension}.exe; Start-Process -NoNewWindow -Wait ${fileBasenameNoExtension}.exe"
+        "${file}",
+        "-o",
+        "${fileBasenameNoExtension}.exe"
       ],
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": []
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "run C program",
+      "type": "shell",
+      "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
     }
   ]
 }
