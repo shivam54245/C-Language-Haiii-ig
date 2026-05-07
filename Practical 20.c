@@ -21,6 +21,4 @@ int main() {
     switch(color) {
         case RED: printf("Color: Red\n"); break;
         case GREEN: printf("Color: Green\n"); break;
-        case BLUE: printf("Color: Blue\n"); break;
-    }
-}
+        case BLUE: printf("Color: Blue\n"); break; } }
