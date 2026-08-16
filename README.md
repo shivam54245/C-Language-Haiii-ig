@@ -2,6 +2,7 @@
 
 C? What, Like it's hard? ( ╹ -╹)? <br>
 Ig it's hard, idk.... <b> ALL THE BEST!!! ദ്ദി◝ ⩊ ◜.ᐟ </b>
+It's easyyy... <br>
 <br> <br>
 
 <h3> It's Easyyyy...dw, remember: </h3>
