@@ -1,6 +1,6 @@
 # Learning-C-Language---
 
-C? What, Like it's hard? ( ╹ -╹)? <br>
+What? Like it's hard? ( ╹ -╹)? <br>
 Ig it's hard, idk.... <b> ALL THE BEST!!! ദ്ദി◝ ⩊ ◜.ᐟ </b> <br>
 It's easyyy... <br>
 <br> <br>
